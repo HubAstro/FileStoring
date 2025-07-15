@@ -1,44 +1,80 @@
-#FileStoring
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FileStoring - README</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 2rem;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border: 1px solid #dee2e6;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">FileStoring</h1>
 
-A simple Spring Boot application that allows users to register, log in, upload files, and manage them. Uploaded files are stored on the server using java.io.File, and their metadata is saved in a MySQL database. Each user can view and manage only their own files.
-Features
-User registration and login
-File upload with custom file name
-File metadata stored in MySQL
-View uploaded files with pagination (10 entries per page)
-Delete uploaded files
-File access restricted to respective users
-Simple frontend using Thymeleaf and Bootstrap
-Tech Stack
-Java 17
-Spring Boot
-Spring Security
-Hibernate (JPA)
-MySQL
-Thymeleaf (HTML templating)
-Bootstrap (styling)
-Getting Started
-Prerequisites
-Java 17+
-Maven
-MySQL
-Configuration
-Create a MySQL database named filestoring.
-Update your application.properties with your MySQL credentials:
-spring.datasource.url=jdbc:mysql://localhost:3306/filestoring
+        <p>A simple Spring Boot application that allows users to register, log in, upload files, and manage them. Uploaded files are stored on the server using <code>java.io.File</code>, and their metadata is saved in a MySQL database. Each user can view and manage only their own files.</p>
+
+        <h2>Features</h2>
+        <ul>
+            <li>User registration and login</li>
+            <li>File upload with custom file name</li>
+            <li>File metadata stored in MySQL</li>
+            <li>View uploaded files with pagination (10 entries per page)</li>
+            <li>Delete uploaded files</li>
+            <li>File access restricted to respective users</li>
+            <li>Simple frontend using Thymeleaf and Bootstrap</li>
+        </ul>
+
+        <h2>Tech Stack</h2>
+        <ul>
+            <li>Java 17</li>
+            <li>Spring Boot</li>
+            <li>Spring Security</li>
+            <li>Hibernate (JPA)</li>
+            <li>MySQL</li>
+            <li>Thymeleaf</li>
+            <li>Bootstrap</li>
+        </ul>
+
+        <h2>Getting Started</h2>
+
+        <h4>Prerequisites</h4>
+        <ul>
+            <li>Java 17+</li>
+            <li>Maven</li>
+            <li>MySQL</li>
+        </ul>
+
+        <h4>Configuration</h4>
+        <p>Create a MySQL database named <code>filestoring</code>. Then, update your <code>application.properties</code> file:</p>
+        <pre><code>spring.datasource.url=jdbc:mysql://localhost:3306/filestoring
 spring.datasource.username=root
 spring.datasource.password=your_password
 spring.jpa.hibernate.ddl-auto=update
-Build and Run
-mvn spring-boot:run
-Visit: http://localhost:8080
-Usage
-Register a new user account.
-Log in using your credentials.
-Upload files with an optional custom name.
-View and delete your uploaded files from the dashboard.
-Folder Structure
-src
+</code></pre>
+
+        <h4>Build and Run</h4>
+        <pre><code>mvn spring-boot:run</code></pre>
+        <p>Visit: <a href="http://localhost:8080">http://localhost:8080</a></p>
+
+        <h2>Usage</h2>
+        <ol>
+            <li>Register a new user account.</li>
+            <li>Log in using your credentials.</li>
+            <li>Upload files with an optional custom name.</li>
+            <li>View and delete your uploaded files from the dashboard.</li>
+        </ol>
+
+        <h2>Folder Structure</h2>
+        <pre><code>src
 ├── main
 │   ├── java
 │   │   └── com.example.filestoring
@@ -51,5 +87,10 @@ src
 │       ├── static
 │       ├── templates
 │       └── application.properties
-License
-This project is licensed under the MIT License.
+</code></pre>
+
+        <h2>License</h2>
+        <p>This project is licensed under the MIT License.</p>
+    </div>
+</body>
+</html>
