@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
+<body class="p-4">
+    <div class="container">
+		<nav class="navbar navbar-expand-lg navbar-light mb-4">
+			<p class="navbar-brand">File Dashboard</p>
+			<div class="ml-auto">
+				<form th:action="@{/logout}" method="post">
+			    	<button type="submit" class="btn btn-outline-danger">Logout</button>
+			    </form>
+			</div>
+		</nav>
+        <h2 class="mb-4">Upload File</h2>
+        <form th:action="@{/upload}" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label>File Name</label>
+                <input type="text" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Select File</label>
+                <input type="file" name="file" class="form-control-file" required>
+            </div>
+            <button class="btn btn-primary">Upload</button>
+        </form>
+
+        <hr>
+
+        <h3>Your Files</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Original Filename</th>
+                    <th>Size (bytes)</th>
+                    <th>Uploaded At</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="file : ${files}">
+                    <td th:text="${file.name}"></td>
+                    <td th:text="${file.filename}"></td>
+                    <td th:text="${file.size}"></td>
+                    <td th:text="${#temporals.format(file.uploadedAt, 'yyyy-MM-dd HH:mm')}"></td>
+                    
+					<td>
+					    <div class="d-flex">
+					        <form th:action="@{/delete}" method="post" class="mr-1" onsubmit="return confirm('Are you sure you want to delete this URL?');">
+					            <input type="hidden" name="id" th:value="${file.id}">
+					            <button class="btn btn-sm btn-danger">Delete</button>
+					        </form>
+					        <a class="btn btn-sm btn-success" th:href="@{'/download/' + ${file.id}}">Download</a>
+					    </div>
+					</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <nav>
+            <ul class="pagination">
+                <li class="page-item" th:classappend="${currentPage == 0} ? 'disabled'">
+                    <a class="page-link" th:href="@{'/dashboard'(page=${currentPage - 1})}">Previous</a>
+                </li>
+                <li class="page-item" th:classappend="${currentPage + 1 >= totalPages} ? 'disabled'">
+                    <a class="page-link" th:href="@{'/dashboard'(page=${currentPage + 1})}">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</body>
+</html>
