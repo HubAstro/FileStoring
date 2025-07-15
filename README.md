@@ -1,7 +1,6 @@
 <h1 class="mb-4">FileStoring</h1>
 <p>A simple Spring Boot application that allows users to register, log in, upload files, and manage them. Uploaded files are stored on the server using <code>java.io.File</code>, and their metadata is saved in a MySQL database. Each user can view and manage only their own files.</p>
-
-        <h2>Features</h2>
+<h2>Features</h2>
         <ul>
             <li>User registration and login</li>
             <li>File upload with custom file name</li>
